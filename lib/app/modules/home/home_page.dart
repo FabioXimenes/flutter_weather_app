@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter_weather_icons/flutter_weather_icons.dart';
 import 'package:wheather_app/app/shared/components/city_card.dart';
 import 'package:wheather_app/app/shared/utils/colors.dart';
 import 'home_controller.dart';
@@ -21,9 +22,46 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
+      drawer: Drawer(
+        child: ListView(
+          children: [
+            DrawerHeader(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Icon(WeatherIcons.wiDayCloudy, color: Colors.white,),
+                  SizedBox(width: 20,),
+                  Text('Weather App', style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: Colors.white),),
+                ],
+              ),
+              decoration: BoxDecoration(
+                color: color2,
+              ),
+            ),
+            ListTile(
+              title: Text(
+                'Dark mode',
+                style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+              ),
+              trailing: Switch(
+                value: false,
+                onChanged: (value) {
+                  print(value);
+                },
+                activeColor: color2,
+              ),
+            ),
+            ListTile(
+              title: Text(
+                'About',
+                style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+              ),
+            )
+          ],
+        ),
+      ),
       appBar: AppBar(
         elevation: 0,
-        leading: Icon(Icons.menu),
       ),
       body: Container(
         height: double.infinity,
