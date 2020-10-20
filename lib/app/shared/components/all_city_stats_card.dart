@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_weather_icons/flutter_weather_icons.dart';
+import 'package:wheather_app/app/shared/components/uvi_info_dialog.dart';
 import 'package:wheather_app/app/shared/models/forecast_model.dart';
 import 'package:wheather_app/app/shared/utils/colors.dart';
 
@@ -122,8 +123,13 @@ class AllCityStatsCard extends StatelessWidget {
                   ),
                   SizedBox(width: 3),
                   GestureDetector(
-                    onTap: (){
-                      print('UV index. 1-2: LOW, 3-5: Medium, 6-7: High, 8-10: Very high, 11: Extreme');
+                    onTap: () {
+                      showDialog(
+                        context: context,
+                        builder: (_) => UVIAlertDialog(),
+                        barrierDismissible: true,
+                      );
+                      // print('UV index. 1-2: LOW, 3-5: Medium, 6-7: High, 8-10: Very high, 11: Extreme');
                     },
                     child: Container(
                       height: 18,
